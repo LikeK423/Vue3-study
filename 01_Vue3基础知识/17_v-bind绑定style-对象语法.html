@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .a{
+      color: red;
+    }
+    .b{
+      font-size: 20px;
+    }
+    .c{
+      font-weight: bolder;
+    } 
+  </style> 
+</head>
+<body>  
+  <div id="app"></div>
+
+  <template id="tem">
+
+    <p :style="{color:myColor}">1.Hallo world</p>
+    <p :style="{color:myColor,fontSize:'20px'}">2.Hallo world</p>
+
+
+    <p :style="{'font-size':myFontSize+'px'}">3.Hallo world</p>
+    <p :style="{fontSize:myFontSize+'px'}">4.Hallo world</p>
+
+    <p :style="styleObj">5.Hallo world</p>
+
+    <p :style="foo()">6.Hallo world</p>
+
+  </template>
+
+  <script src="./vue.js"></script>
+  <script>
+    const obj = {
+      template: "#tem",
+      data(){
+        return {
+          myColor:'red',
+          myFontSize:50,
+          styleObj:{
+            fontSize:'30px',
+            'font-weight':700,
+            backgroundColor:'red'
+          }
+        }
+      },
+      methods:{
+        foo(){
+          return {
+            fontSize:'30px',
+            'font-weight':700,
+            backgroundColor:'red'
+          }
+        }
+      }
+    }
+    Vue.createApp(obj).mount("#app");
+  </script>
+</body>
+</html>

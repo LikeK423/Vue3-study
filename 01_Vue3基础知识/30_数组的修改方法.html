@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head> 
+
+<body>
+  <div id="app"></div>
+
+  <template id="tem">
+    <ul>
+      <li v-for="item in people">{{item}}</li>
+    </ul>
+    <input type="text" v-model="message" @keyup.enter="add">
+  </template>
+
+  <script src="./vue.js"></script>
+  <script>
+    const App = {
+      template: "#tem",
+      data() {
+        return {
+          message:'',
+          people:[
+            '岳老三',
+            '桃花仙',
+            '段正淳',
+            '王仲强'
+          ]
+        };
+      },
+      methods:{
+        add(){
+          this.people.push(this.message)
+          this.message=''
+        }
+      }
+    };
+    Vue.createApp(App).mount("#app");
+  </script>
+</body>
+
+</html>

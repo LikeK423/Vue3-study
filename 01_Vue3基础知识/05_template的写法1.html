@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app"></div>
+
+  <script type="x-template" id="tem">
+    <div>
+      <h1>{{ counter }}</h1>
+    </div>
+  </script>
+
+  <script src="./vue.js"></script>
+  <script>
+    Vue.createApp({ 
+      template:`#tem`,
+      // #tem 前面的#号表示它将被用作querySelector并使用匹配元素的innerHTML做为模板字符串   即template = document.querySelector("#tem")
+      data(){
+        return{
+          counter:0
+        }
+      }
+    }).mount('#app')
+  </script>
+</body>
+</html>

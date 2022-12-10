@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>  
+  <div id="app"></div>
+
+  <template id="tem">
+    <div>
+      <h1>{{ counter }}</h1>
+      <!-- v-once用于指定元素或者组件只渲染一次，常用于性能优化；当数据发生变化时，元素或者组件及其所以的元素将视为静态内容并且跳过 -->
+      <div v-once>
+        <h2>{{ message }}</h2>
+        <h2>{{ counter }}</h2>
+      </div>
+      <button @click="increment">+</button>
+    </div>
+  </template>
+
+  <script src="./vue.js"></script>
+  <script>
+    const obj = {
+      template: "#tem",
+      data(){
+        return {
+          message:'xyz',
+          counter:10
+        }
+      },
+      methods:{
+        increment(){
+          this.counter+=1
+        }
+      }
+    }
+    Vue.createApp(obj).mount("#app");
+  </script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .foo{
+      color: red;
+    }
+    .size{
+      font-size: 20px;
+    }
+  </style> 
+</head>
+<body>  
+  <div id="app"></div>
+
+  <template id="tem">
+
+    <!-- 1. 普通绑定-->
+    <h1 :class="className">1.Hallo world</h1>
+
+    <!-- 2. 对象语法-->
+    <h1 :class="{foo:isActive}">2.Hallo world</h1>
+    <button @click="bar">Change</button>
+
+    <!-- 3. 键值对形式-->
+    <h1 :class="{foo:isActive, size:true }">3.Hallo world</h1>
+    <button @click="bar">Change</button>
+
+    <!-- 4. 默认class和动态class-->
+    <h1 class="size" :class="{ foo:isActive }">4.Hallo world</h1>
+
+    <!-- 5. 将class放到单独的属性-->
+    <h1 :class="cssObj">5.Hallo world</h1>
+
+    <!-- 6. methods方法-->
+    <h1 :class="baz()">6.Hallo world</h1>
+
+  </template>
+
+  <script src="./vue.js"></script>
+  <script>
+    const obj = {
+      template: "#tem",
+      data(){
+        return {
+          className:'foo',
+          isActive:true,
+          cssObj:{
+            foo:true,
+            size:true
+          }
+        }
+      },
+      methods:{
+        bar(){
+          this.isActive = !this.isActive
+        },
+        baz(){
+          return {
+            foo:true,
+            size:true
+          }
+        }
+      }
+    }
+    Vue.createApp(obj).mount("#app");
+  </script>
+</body>
+</html>

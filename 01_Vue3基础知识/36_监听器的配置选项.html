@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <template id="tem">
+      <p>{{info.name}}</p>
+      <p>{{info.age}}</p>
+      <button @click="btn1">改变info</button>
+      <button @click="btn2">改变info.name</button>
+      <!-- 存在一个问题： 改变info.name时，打印的旧值和新值的info.name是一样的 -->
+    </template>
+
+    <script src="./vue.js"></script>
+    <script>
+      const App = {
+        template: "#tem",
+        data() {
+          return {
+            info: {
+              name: "余沧海",
+              age: 99,
+            },
+          };
+        },
+        watch: {
+          // 默认情况下，监听器只会针对监听器本身的改变（内部的改变不能监听）解决方法:深度监听
+          // info(newValue, oldValue) {
+          //   console.log("新值", newValue);
+          //   console.log("旧值", oldValue);
+          // },
+          // 等价于
+          // info: {
+          //   handler: function (newValue, oldValue) {
+          //     console.log("新值", newValue);
+          //     console.log("旧值", oldValue);
+          //   }
+          // },
+
+          info: {
+            handler: function (newValue, oldValue) {
+              console.log("新值", newValue);
+              console.log("旧值", oldValue);
+            },
+            deep:true,// 深度监听
+            immediate:true // 立即执行，页面刷新时会执行一次
+          },
+        },
+        methods: {
+          btn1() {
+            this.info = {
+              name: "慧净",
+              age: 57,
+            };
+          },
+          btn2() {
+            this.info.name = "奚长老";
+          },
+        },
+      };
+      Vue.createApp(App).mount("#app");
+    </script>
+  </body>
+</html>

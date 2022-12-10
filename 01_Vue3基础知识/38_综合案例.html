@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      table{
+        border: 1px solid #e9e9e9;
+        border-collapse: collapse;
+        border-spacing: 0;
+      }
+      th,td{
+        padding: 8px 16px;
+        border: 1px solid #e9e9e9;
+        text-align: left;
+      }
+      th{
+        background-color: #f7f7f7;
+        color: #5c6b77;
+        font-weight: 600;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <template id="tem"> 
+      <table>
+        <thead>
+          <th></th>
+          <th>书籍名称</th>
+          <th>出版日期</th>
+          <th>价格</th>
+          <th>购买数量</th>
+          <th>操作</th>
+        </thead>
+        <tbody>
+          <tr v-for="(item, index) in books">
+            <td>{{index+1}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.data}}</td>
+            <td>{{item.price}}</td>
+            <td>
+              <button :disabled="item.count<=0" @click="decrement(index)">-</button>
+              {{item.count}}
+              <button  @click="increment(index)">+</button>
+            </td>
+            <td>
+              <button @click="remove(index)">移除</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <h3>总价格￥：{{total}}</h3>
+    </template>
+
+    <script src="./vue.js"></script>
+    <script>
+      const App = {
+        template: "#tem",
+        data() {
+          return {
+            books: [
+              {
+                id: 1,
+                name: "青海大学昆仑学院",
+                data: "12/3/2022",
+                price: 92.8978,
+                count: 1,
+              },
+              {
+                id: 2,
+                name: "南京体育学院",
+                data: "6/2/2063",
+                price: 534,
+                count: 1,
+              },
+              {
+                id: 3,
+                name: "上海第二工业大学",
+                data: "5/2/2050",
+                price: 711,
+                count: 1,
+              },
+              {
+                id: 4,
+                name: "广州医科大学",
+                data: "4/10/2117",
+                price: 273,
+                count: 1,
+              },
+            ],
+          };
+        },
+        methods: {
+          decrement(index){
+            this.books[index].count--
+          },
+          increment(index){
+            this.books[index].count++
+          },
+          remove(index){
+            this.books.splice(index,1)
+          }
+        },
+        computed:{
+          total(){
+            let sum = 0;
+            for(let book of this.books){
+              sum += (book.count * book.price)
+            }
+            return sum
+          }
+        }
+      };
+      Vue.createApp(App).mount("#app");
+    </script>
+  </body>
+</html>

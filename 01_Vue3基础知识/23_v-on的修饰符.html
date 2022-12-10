@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>  
+  <div id="app"></div>
+
+  <template id="tem">
+    
+    <!-- 冒泡 -->
+    <div @click="div1Click"> 
+      <button @click="btn1Click">按钮1</button>
+    </div>
+    <div @click="div2Click"> 
+      <button @click.stop="btn2Click">按钮2</button>
+    </div>
+
+
+    <!-- 不加.enter，按下任意一个按键抬起都会出发函数，添加.enter修饰符后，只有按下抬起enter键才会触发 -->
+    <input type="text" @keyup="enterKeyUp">
+    <input type="text" @keyup.enter="enterKeyUp">
+
+
+  </template>
+
+  <script src="./vue.js"></script>
+  <script>
+    const obj = {
+      template: "#tem",
+      data(){
+        return {
+          counter:0
+        }
+      },
+      methods:{
+        div1Click(){
+           console.log('div1Click')
+        },
+        btn1Click(){
+          console.log('btn1Click')
+        },
+        div2Click(){
+          console.log('div2Click') 
+        },
+        btn2Click(){
+          console.log('btn2Click')
+        },
+        enterKeyUp(event){
+          console.log('按键抬起',event.target.value)
+        }
+      }
+    }
+    Vue.createApp(obj).mount("#app");
+  </script>
+</body>
+</html>

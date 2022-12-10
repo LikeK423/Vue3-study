@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    [v-cloak]{
+      display: none;
+    }
+  </style> 
+</head>
+<body>  
+  <div id="app"></div>
+
+  <template id="tem">
+    <!-- vue2的template只能有一个根元素 -->
+    <!-- vue3允许template有多个根元素 -->
+    <img v-bind:src="imgSrc" alt="">
+    <a :href="url">x</a>
+  </template>
+
+  <script src="./vue.js"></script>
+  <script>
+    const obj = {
+      template: "#tem",
+      data(){
+        return {
+          url:'https://www.bilibili.com/',
+          imgSrc:'https://w.wallhaven.cc/full/kx/wallhaven-kx36mq.png'
+        }
+      }
+    }
+    Vue.createApp(obj).mount("#app");
+  </script>
+</body>
+</html>

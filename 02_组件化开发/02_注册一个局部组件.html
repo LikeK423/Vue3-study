@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="app"></div>
+
+    <template id="tem">
+      <Component-a></Component-a>
+
+      <!-- ComponentA似乎这样写不行，和官网对不上https://cn.vuejs.org/guide/components/registration.html#local-registration 
+        官网：这意味着一个以 MyComponent 为名注册的组件，在模板中可以通过 <MyComponent> 或 <my-component> 引用。这让我们能够使用同样的 JavaScript 组件注册代码来配合不同来源的模板。
+      -->
+      <ComponentA></ComponentA>
+    </template>
+
+    <script src="../01_Vue3基础知识/vue.js"></script>
+    <script>
+      const componentA = {
+        template: `<h1>这是componentA组件</h1>`,
+      };
+
+      const App = {
+        template: "#tem",
+        components: {
+          // key(组件名称)：value(组件对象)
+          ComponentA: componentA,
+        },
+        data() {
+          return {};
+        },
+      };
+      Vue.createApp(App).mount("#app");
+    </script>
+  </body>
+</html>

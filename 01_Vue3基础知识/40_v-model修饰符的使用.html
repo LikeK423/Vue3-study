@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app"></div> 
+
+  <template id="tem">
+    <h1>{{text}}</h1>
+    默认<input type="text" style="width: 500px" v-model="text" /><!-- 默认情况下绑定的是input事件 --><br />
+    lazy修饰符<input type="text" style="width: 500px" v-model.lazy="text" /><!-- 将绑定的事件切换为change事件，只有在提交时才会触发（如点击回车） -->
+    <hr />
+    <input type="text" style="width: 500px" v-model="num1" />输入的类型是：{{ typeof num1 }}<br />
+    <input type="text" style="width: 500px" v-model.number="num2" />输入的类型是：{{ typeof num2 }}
+    <hr />
+    默认情况<input type="text" style="width: 500px" v-model="text1" />输入长度{{ text1.length}}<br />
+    去除两端空格<input type="text" style="width: 500px" v-model.trim="text2" />输入长度{{ text2.length }}
+  </template>
+
+  <script src="./vue.js"></script>
+  <script>
+    const App = {
+      template: "#tem",
+      data() {
+        return {
+          text: "后生可畏，焉知来者之不如今也。",
+          num1: "",
+          num2: "",
+          text1: "",
+          text2: "",
+        };
+      },
+      methods: {},
+    };
+    Vue.createApp(App).mount("#app");
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <template id="tem">
+      问题:<input type="text" style="width: 500px;" v-model="question" />
+    </template>
+
+    <script src="./vue.js"></script>
+    <script>
+      const App = {
+        template: "#tem",
+        data() {
+          return {
+            question: "“浪漫”是一袭美丽的晚礼服，但你不能一天到晚都穿着它。",
+            answer: "",
+          };
+        },
+        watch: {
+          question(newValue, oldValue) {
+            console.log('新值',newValue)
+            console.log('旧值',oldValue)
+          }
+        }
+      };
+      Vue.createApp(App).mount("#app");
+    </script>
+  </body>
+</html>

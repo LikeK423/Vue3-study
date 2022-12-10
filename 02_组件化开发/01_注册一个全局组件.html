@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="app"></div>
+
+    <template id="tem">
+      <component-a></component-a>
+      <component-b></component-b>
+    </template>
+
+    <script src="../01_Vue3基础知识/vue.js"></script>
+    <script>
+      const App = {
+        template: "#tem",
+        data() { 
+          return {};
+        },
+      };
+      const app = Vue.createApp(App);
+      // 使用app注册一个全局组件——app.component(组件名称， 组件对象)
+      // 组件名称命名方式：1.aaa-bbb 2.aaaBbb
+      app.component("component-a", {
+        template: `<h1>这是component-a组件</h1>`,
+        data() {
+          return {};
+        },
+        methods: {},
+      });
+      app.component("component-b", {
+        template: `<h1>这是component-b组件</h1>`,
+      });
+      app.mount("#app");
+
+      // 全局注册缺点
+      // 如果我们注册了三个全局组件，componentA,componentB,componentC。但只使用了A和B组件，C组件没有使用
+      // 那么打包时C组件仍然会被打包，导致用户下载的js包也会相应的增大
+    </script>
+  </body>
+</html>

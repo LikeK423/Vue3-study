@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="app"></div>
+
+    <template id="tem">
+      <h3>{{text}}</h3>
+      <!-- value绑定，监听input -->
+      <input type="text" style="width: 500px" :value="text" @input="update" />
+      <hr />
+      <!-- 等价于 -->
+      <input type="text" style="width: 500px" v-model="text" />
+      <hr />
+
+      <!-- 1 -->
+      <textarea
+        name="intro"
+        id="intro"
+        cols="30"
+        rows="10"
+        v-model="text"
+      ></textarea>
+      <hr />
+
+      <!-- 2 -->
+      <h3>你的爱好{{hobbies}}</h3>
+      <label for="1">
+        <input type="checkbox" id="1" v-model="hobbies" value="篮球" />篮球
+      </label>
+      <label for="2">
+        <input type="checkbox" id="2" v-model="hobbies" value="足球" />足球
+      </label>
+      <label for="3">
+        <input type="checkbox" id="3" v-model="hobbies" value="兵乓球" />兵乓球
+      </label>
+      <hr />
+
+      <!-- 3 -->
+      <h3>你的性别{{gender}}</h3>
+      <label for="1">
+        <input type="radio" id="1" v-model="gender" value="男" />男
+      </label>
+      <label for="2">
+        <input type="radio" id="2" v-model="gender" value="女" />女
+      </label>
+      <hr />
+
+      <!-- 4 -->
+      <h3>你喜欢的水果{{fruit}}</h3>
+      <select v-model="fruit">
+        <option value="苹果">苹果</option>
+        <option value="橘子">橘子</option>
+        <option value="香蕉">香蕉</option>
+      </select>
+    </template>
+
+    <script src="./vue.js"></script>
+    <script>
+      const App = {
+        template: "#tem",
+        data() {
+          return {
+            text: "君子之于天下也，无适也，无莫也，义之与比。",
+            hobbies: [],
+            gender: "男",
+            fruit: "",
+          };
+        },
+        methods: {
+          update(event) {
+            this.text = event.target.value;
+          },
+        },
+      };
+      Vue.createApp(App).mount("#app");
+    </script>
+  </body>
+</html>

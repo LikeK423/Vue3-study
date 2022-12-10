@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>  
+  <div id="app"></div>
+
+  <template id="tem">
+    <button @click="foo">function(){}</button>
+    <br>
+    <button @click="bar">()=>{}</button>
+  </template>
+
+  <script src="./vue.js"></script>
+  <script>
+    // https://juejin.cn/post/7074618155317854221#heading-7
+    Vue.createApp({ 
+      template: "#tem",
+      methods:{
+        foo(){
+          console.log(this)
+        },
+        bar:()=>{
+          // 箭头函数不绑定this
+          console.log(this)// window
+        }
+      }
+    }).mount("#app");
+  </script>
+</body>
+</html>

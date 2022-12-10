@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app"></div>
+
+<!-- diff算法 https://www.51cto.com/article/712614.html -->
+
+    <template id="tem">
+      <!-- 绑定key后，数组插入元素渲染效率更高 -->
+      <ul>
+        <li v-for="item in array" :key="item">{{item}}</li>
+      </ul>
+      <button @click="insert">1.插入f元素</button>
+    </template>
+
+    <script src="./vue.js"></script>
+    <script>
+      const App = {
+        template: "#tem",
+        data() {
+          return {
+            array: ["a", "b", "c","d"],
+          }
+        },
+        methods:{
+          insert(){
+            this.array.splice(2,0,'f')
+          }
+        }
+      }
+      Vue.createApp(App).mount("#app");
+    </script>
+  </body>
+</html>

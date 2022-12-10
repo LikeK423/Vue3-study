@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <template id="tem">
+      <h1>遍历数组</h1>
+      <ul>
+        <li v-for="(item,index) in array">{{index+1}} . {{item}}</li>
+      </ul>
+      <ul>
+        <li v-for="(item,index) in people">{{index}}. 姓名{{item.name}}、住址：{{item.address}}</li>
+      </ul>
+      <h1>遍历对象</h1>
+      <ul>
+       <li v-for="(item,key,index) in info">{{item}}——{{key}}——{{index}}</li>
+     </ul>
+     <h1>遍历数字</h1>
+      <ul>
+       <li v-for="(num,index) in 10">数字{{num}}——索引值{{index}}</li>
+     </ul>
+
+    </template>
+
+    <script src="./vue.js"></script>
+    <script>
+      const App = {
+        template: "#tem",
+        data() {
+          return {
+            array: ["020-85233583", "0391-2989922", "0999-8137391"],
+            people: [
+              {
+                name: "哈大霸",
+                address: "重庆市沙坪坝区大学城景铮路666号",
+              },
+              {
+                name: "萧远山",
+                address: "山东省青州市云门山南路9966号",
+              },
+              {
+                name: "万大平",
+                address: "河南省商丘市北海东路66号商丘学院",
+              },
+            ],
+            info:{
+              name:'辛弃疾',
+              phone:"0734-8378042",
+              address:"山东省潍坊市滨海经济技术开发区汉江东三街01177号"
+            }
+          };
+        },
+      };
+      Vue.createApp(App).mount("#app");
+    </script>
+  </body>
+</html>

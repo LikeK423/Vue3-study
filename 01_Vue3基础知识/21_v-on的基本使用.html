@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .foo{
+      width: 300px;
+      height: 300px;
+      background-color: red;
+    }
+  </style>
+</head>
+<body>  
+  <div id="app"></div>
+
+  <template id="tem">
+    
+    <!-- 完整写法：v-on：监听的事件=“ methods中的方法 ” -->
+    <button v-on:click="btnClick">按钮1</button>
+
+    <!-- 语法糖 -->
+    <div class="foo" @mousemove="mouseMove">鼠标移动</div>
+
+    <!-- 绑定一个表达式 -->
+    <button @click="counter++">{{counter}}</button>
+
+    <!-- 绑定一个对象 -->
+    <div class="foo" v-on="{click:btnClick,mousemove:mouseMove}">按钮2</div>
+    <div class="foo" @="{click:btnClick,mousemove:mouseMove}">按钮2</div>
+
+  </template>
+
+  <script src="./vue.js"></script>
+  <script>
+    const obj = {
+      template: "#tem",
+      data(){
+        return {
+          counter:0
+        }
+      },
+      methods:{
+        btnClick(){
+          console.log('点击了按钮')
+        },
+        mouseMove(){
+          console.log('鼠标移动了')
+        }
+      }
+    }
+    Vue.createApp(obj).mount("#app");
+  </script>
+</body>
+</html>
