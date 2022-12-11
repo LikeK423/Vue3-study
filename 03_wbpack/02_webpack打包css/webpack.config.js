@@ -16,6 +16,14 @@ module.exports = {
         // use:[
         //   {loader:"css-loader"}
         // ]
+      },
+      {
+        test:/\.less$/,// 处理less文件
+        use:[
+          "style-loader",
+          "css-loader",
+          "less-loader"
+        ]
       }
     ]
   }
