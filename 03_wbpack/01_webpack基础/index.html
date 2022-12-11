@@ -15,11 +15,11 @@
   <!-- 但是经过webpack打包后就可以在浏览器运行 , 直接在文件夹运行webpack就可以打包,但这时是全局安装的webpack打包的-->
   <script src="./dist/main.js"></script>
 
-  <!-- 安装局部webpack -->
+  <!-- 安装局部webpack --> 
   <!-- 1.npm init  -->
   <!-- 2.npm install webpack webpack-cli -D -->
-  <!-- 3.局部webpack打包命令1： .\node_modules\.bin\webpack
-         局部webpack打包命令2： npx webpack (npm提供npx,会优先在node_modules下找) 
+  <!-- 3.局部webpack打包命令1： .\node_modules\.bin\webpack (如果仍然运行webpack，则仍然是全局打包，因为默认全局)
+         局部webpack打包命令2： npx webpack (npm提供npx,会优先在node_modules下找) (默认入口文件是index.js，如果入口文件是main.js并且想把生成文件夹由dist换成build则输入npx webpack --entry ./src/main.js --output-path ./build)
          局部webpack打包命令3： npm run build (需要先在package.json文件里面配置"build":"webpack"，该文件里面的命令会优先在node_modules下找)
   -->
 </body>
