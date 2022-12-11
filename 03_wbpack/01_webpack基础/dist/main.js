@@ -1,0 +1,1 @@
+(()=>{var r={466:r=>{r.exports={price:function(){return"￥99"}}}},o={};function e(t){var n=o[t];if(void 0!==n)return n.exports;var s=o[t]={exports:{}};return r[t](s,s.exports,e),s.exports}(()=>{"use strict";const{price:r}=e(466);console.log(30),console.log(r())})()})();

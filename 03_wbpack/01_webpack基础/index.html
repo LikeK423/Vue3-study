@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- 浏览器运行不了，似乎是既有ES又有CommonJS -->
+  <script src="./src/index.js" type="module"></script>
+
+  <!-- 但是经过webpack打包后就可以在浏览器运行 , 直接在文件夹运行webpack就可以打包,但这时是全局安装的webpack打包的-->
+  <script src="./dist/main.js"></script>
+
+  <!-- 安装局部webpack -->
+  <!-- 1.npm init  -->
+  <!-- 2.npm install webpack webpack-cli -D -->
+  <!-- 3.局部webpack打包命令1： .\node_modules\.bin\webpack
+         局部webpack打包命令2： npx webpack (npm提供npx,会优先在node_modules下找) 
+         局部webpack打包命令3： npm run build (需要先在package.json文件里面配置"build":"webpack"，该文件里面的命令会优先在node_modules下找)
+  -->
+</body>
+
+</html>
