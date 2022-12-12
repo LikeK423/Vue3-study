@@ -1,0 +1,1 @@
+["桑昆","端木元","玉磬子"].forEach((function(o){return console.log(o)}));
