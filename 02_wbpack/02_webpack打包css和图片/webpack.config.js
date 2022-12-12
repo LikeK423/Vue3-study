@@ -33,6 +33,16 @@ module.exports = {
             name:"img/[name]-[hash:6].[ext]"
           }
         }
+      },
+      {
+        test:/\.(jpg|jpeg|png|gif|svg)$/,
+        use:{
+          loader:"url-loader",
+          options:{
+            name:"img/[name]-[hash:6].[ext]",
+            limit:100*1024 // 小于100kb的图片就进行base64编码
+          }
+        }
       }
     ]
   }
