@@ -24,6 +24,15 @@ module.exports = {
           "css-loader",
           "less-loader"
         ]
+      },
+      {
+        test:/\.(jpg|jpeg|png|gif|svg)$/,
+        use:{
+          loader:"file-loader",
+          options:{
+            name:"img/[name]-[hash:6].[ext]"
+          }
+        }
       }
     ]
   }
