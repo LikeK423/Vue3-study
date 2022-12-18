@@ -1,0 +1,25 @@
+{
+  "name": "02_vite_basic",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "vite",
+    "build":"vite build",
+    "preview":"vite preview"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@vue/compiler-sfc": "^3.2.45",
+    "postcss": "^8.4.20",
+    "postcss-preset-env": "^7.8.3",
+    "vite": "^4.0.2"
+  },
+  "dependencies": {
+    "@vitejs/plugin-vue": "^4.0.0",
+    "require": "^2.4.20",
+    "vue": "^3.2.45"
+  }
+}
