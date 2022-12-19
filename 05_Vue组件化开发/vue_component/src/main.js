@@ -7,6 +7,8 @@ import { createApp } from 'vue'
 // import App from './06_事件总线的使用/App.vue'
 // import App from "./07_插槽slot/App.vue";
 // import App from "./08_具名插槽的使用/App.vue";
-import App from "./09_作用域插槽的使用/App.vue";
+// import App from "./09_作用域插槽的使用/App.vue";
+// import App from "./10_动态组件的使用/App.vue"
+import App from "./11_异步组件的使用/App.vue";
 
 createApp(App).mount('#app');
