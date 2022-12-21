@@ -16,7 +16,7 @@
       <category></category>
     </template>
     <hr>
-
+ 
     2.动态组件实现
     <!-- 使用include时需要在export default里面定义name属性 -->
     <keep-alive include="home,about">
