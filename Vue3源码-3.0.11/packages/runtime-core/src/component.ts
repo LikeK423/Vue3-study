@@ -573,7 +573,7 @@ function setupStatefulComponent(
   }
   // 2. call setup()
   const { setup } = Component
-  if (setup) {
+  if (setup) {  
     const setupContext = (instance.setupContext =
       setup.length > 1 ? createSetupContext(instance) : null)
 
